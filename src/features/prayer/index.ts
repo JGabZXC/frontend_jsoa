@@ -1,0 +1,2 @@
+export { PrayerPage } from './PrayerPage'
+
