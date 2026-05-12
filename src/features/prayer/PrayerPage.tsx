@@ -13,9 +13,6 @@ import {
 import { useNavigate } from "react-router-dom";
 import { appRoutes } from "../../app/routes";
 
-const displayFont = {
-  fontFamily: '"Fraunces", "Iowan Old Style", serif',
-};
 const bodyFont = {
   fontFamily: '"Manrope", "Avenir", sans-serif',
 };
@@ -116,10 +113,7 @@ export function PrayerPage() {
               <p className="text-[#8C6B3E] font-mono text-xs uppercase tracking-[0.3em] mb-6 flex items-center gap-4">
                 <span className="w-12 h-px bg-[#8C6B3E]" /> Prayer Request
               </p>
-              <h1
-                className="text-[11vw] md:text-[5.5vw] leading-[0.9] font-black uppercase tracking-tighter"
-                style={displayFont}
-              >
+              <h1 className="text-[11vw] md:text-[5.5vw] leading-[0.9] font-black uppercase tracking-tighter font-sans">
                 We carry <span className="text-[#B30000]">your name</span> in
                 prayer.
               </h1>
@@ -200,10 +194,7 @@ export function PrayerPage() {
                     <p className="text-xs font-mono uppercase tracking-[0.3em] text-[#8C6B3E]">
                       Received
                     </p>
-                    <h3
-                      className="text-3xl md:text-4xl font-black uppercase tracking-tighter mt-4"
-                      style={displayFont}
-                    >
+                    <h3 className="text-3xl md:text-4xl font-black font-sans uppercase tracking-tighter mt-4">
                       We are praying.
                     </h3>
                     <p className="text-[#A0A0A0] mt-4">
@@ -384,10 +375,7 @@ export function PrayerPage() {
               <p className="text-[#8C6B3E] font-mono text-xs uppercase tracking-[0.3em] mb-4 flex items-center gap-3">
                 <Clock size={14} /> Prayer rhythm
               </p>
-              <h2
-                className="text-5xl md:text-6xl font-black uppercase tracking-tighter"
-                style={displayFont}
-              >
+              <h2 className="text-5xl md:text-6xl font-black font-sans uppercase tracking-tighter">
                 How we pray together.
               </h2>
             </div>
@@ -440,10 +428,7 @@ export function PrayerPage() {
             <p className="text-xs uppercase tracking-[0.3em] font-mono text-[#8C6B3E] mb-4">
               Join us in person
             </p>
-            <h2
-              className="text-4xl md:text-6xl font-black uppercase tracking-tighter"
-              style={displayFont}
-            >
+            <h2 className="text-4xl md:text-6xl font-black font-sans uppercase tracking-tighter">
               Let us pray with you face to face.
             </h2>
             <p className="text-[#555] mt-6 text-lg">
