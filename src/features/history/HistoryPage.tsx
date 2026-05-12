@@ -208,22 +208,24 @@ export function HistoryPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-120px" }}
             transition={{ duration: 0.7, ease: "easeOut" }}
-            className="lg:col-span-5 relative"
+            className="lg:col-span-5"
           >
-            <div className="aspect-3/4 w-full bg-[#111] overflow-hidden group">
-              <img
-                src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?q=80&w=1974&auto=format&fit=crop"
-                alt="Worship gathering"
-                className="w-full h-full object-cover grayscale mix-blend-luminosity opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-1000"
-              />
-            </div>
-            <div className="absolute -bottom-8 -right-8 bg-[#8C6B3E] text-[#0A0A0A] p-10 hidden md:block border-4 border-[#0A0A0A]">
-              <p className="text-6xl font-black mb-1 font-serif">28</p>
-              <p className="text-xs font-bold uppercase tracking-[0.2em]">
-                Years of
-                <br />
-                Grace
-              </p>
+            <div className="max-w-xs md:max-w-sm lg:max-w-none mx-auto lg:mx-0 relative">
+              <div className="aspect-3/4 w-full bg-[#111] overflow-hidden group">
+                <img
+                  src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?q=80&w=1974&auto=format&fit=crop"
+                  alt="Worship gathering"
+                  className="w-full h-full object-cover grayscale mix-blend-luminosity opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-1000"
+                />
+              </div>
+              <div className="absolute -bottom-8 -right-8 bg-[#8C6B3E] text-[#0A0A0A] p-10 hidden md:block border-4 border-[#0A0A0A]">
+                <p className="text-6xl font-black mb-1 font-serif">28</p>
+                <p className="text-xs font-bold uppercase tracking-[0.2em]">
+                  Years of
+                  <br />
+                  Grace
+                </p>
+              </div>
             </div>
           </motion.div>
 
