@@ -7,6 +7,7 @@ import { MinistriesPage } from "../features/ministries";
 import { PlantingPage } from "../features/planting";
 import { PrayerPage } from "../features/prayer";
 import { PlanVisitPage } from "../features/visit";
+import { CellGroupsPage } from "../features/cellgroups";
 
 export function AppRouter() {
   return (
@@ -17,6 +18,7 @@ export function AppRouter() {
           <Route path={appRoutes.planVisit} element={<PlanVisitPage />} />
           <Route path={appRoutes.history} element={<HistoryPage />} />
           <Route path={appRoutes.ministries} element={<MinistriesPage />} />
+          <Route path={appRoutes.cellGroups} element={<CellGroupsPage />} />
           <Route path={appRoutes.churchPlanting} element={<PlantingPage />} />
           <Route path={appRoutes.prayerRequest} element={<PrayerPage />} />
           <Route

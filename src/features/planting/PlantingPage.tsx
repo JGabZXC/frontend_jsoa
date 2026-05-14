@@ -1,4 +1,5 @@
 import { motion, useScroll, useTransform } from "framer-motion";
+import type { MouseEvent } from "react";
 import { ArrowRight, Compass, MapPin, Users } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { appRoutes } from "../../app/routes";
@@ -90,6 +91,16 @@ export function PlantingPage() {
   const navigate = useNavigate();
   const { scrollYProgress } = useScroll();
   const marquee = useTransform(scrollYProgress, [0, 1], [0, -220]);
+  const handleAnchorScroll =
+    (targetId: string) => (event: MouseEvent<HTMLAnchorElement>) => {
+      event.preventDefault();
+      const target = document.querySelector(targetId);
+
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+        window.history.replaceState(null, "", targetId);
+      }
+    };
 
   return (
     <div className="bg-[#0A0A0A] text-[#F3F3F3] font-sans selection:bg-[#B30000] selection:text-white min-h-screen">
@@ -150,6 +161,7 @@ export function PlantingPage() {
                 </button>
                 <a
                   href="#regions"
+                  onClick={handleAnchorScroll("#regions")}
                   className="border border-[#333] py-5 px-7 uppercase tracking-[0.2em] text-xs font-bold text-[#F3F3F3] hover:bg-[#F3F3F3] hover:text-[#0A0A0A] transition-colors"
                 >
                   View Target Regions

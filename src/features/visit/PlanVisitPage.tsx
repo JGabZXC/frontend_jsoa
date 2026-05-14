@@ -1,4 +1,5 @@
 import { motion, useScroll, useTransform } from "framer-motion";
+import type { MouseEvent } from "react";
 import {
   ArrowRight,
   Calendar,
@@ -19,7 +20,8 @@ const bodyFont = {
 const visitHighlights = [
   {
     title: "Sunday gatherings",
-    detail: "8:00 AM | 10:30 AM | 4:00 PM",
+    detail:
+      "7:00 AM - 8:30 AM | 9:00 AM - 10:30 AM | 5:00 PM - 6:30 PM | 7:00 PM - 8:30 PM",
     icon: Clock,
     accent: "#B30000",
   },
@@ -96,6 +98,16 @@ const mapLink =
 export function PlanVisitPage() {
   const { scrollYProgress } = useScroll();
   const marquee = useTransform(scrollYProgress, [0, 1], [0, -220]);
+  const handleAnchorScroll =
+    (targetId: string) => (event: MouseEvent<HTMLAnchorElement>) => {
+      event.preventDefault();
+      const target = document.querySelector(targetId);
+
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+        window.history.replaceState(null, "", targetId);
+      }
+    };
 
   return (
     <div
@@ -151,6 +163,7 @@ export function PlanVisitPage() {
               <div className="mt-10 flex flex-wrap gap-4">
                 <a
                   href="#location"
+                  onClick={handleAnchorScroll("#location")}
                   className="group relative overflow-hidden bg-[#F3F3F3] text-[#0A0A0A] py-5 px-7 uppercase tracking-[0.2em] text-xs font-bold transition-colors hover:text-[#F3F3F3]"
                 >
                   <span className="absolute inset-0 bg-[#B30000] translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[0.19,1,0.22,1]" />
@@ -160,6 +173,7 @@ export function PlanVisitPage() {
                 </a>
                 <a
                   href="#service-times"
+                  onClick={handleAnchorScroll("#service-times")}
                   className="border border-[#333] py-5 px-7 uppercase tracking-[0.2em] text-xs font-bold text-[#F3F3F3] hover:bg-[#F3F3F3] hover:text-[#0A0A0A] transition-colors"
                 >
                   View service times
@@ -206,7 +220,10 @@ export function PlanVisitPage() {
         </div>
       </section>
 
-      <section className="py-20 border-y border-[#222] overflow-hidden bg-[#0A0A0A] relative">
+      <section
+        id="service-times"
+        className="py-20 border-y border-[#222] overflow-hidden bg-[#0A0A0A] relative"
+      >
         <motion.div
           style={{ x: marquee }}
           className="whitespace-nowrap flex gap-12 px-6"
@@ -216,10 +233,7 @@ export function PlanVisitPage() {
           </h2>
         </motion.div>
 
-        <div
-          id="service-times"
-          className="max-w-350 mx-auto px-6 md:px-12 mt-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-start"
-        >
+        <div className="max-w-350 mx-auto px-6 md:px-12 mt-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           <div className="lg:col-span-5">
             <div className="flex items-center gap-4 mb-6">
               <div className="h-px w-10 bg-[#B30000]" />
