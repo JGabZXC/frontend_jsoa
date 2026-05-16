@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import type { LucideIcon } from "lucide-react";
 import {
   ArrowRight,
@@ -10,13 +10,10 @@ import {
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { appRoutes } from "../../app/routes";
+import { MarqueeBand } from "../../shared";
 
 export function HistoryPage() {
   const navigate = useNavigate();
-  const { scrollYProgress } = useScroll();
-  const marqueeLeft = useTransform(scrollYProgress, [0, 1], [0, -220]);
-  const marqueeRight = useTransform(scrollYProgress, [0, 1], [0, 220]);
-
   const stats = [
     { value: "1996", label: "Established" },
     { value: "28+", label: "Years of Grace" },
@@ -193,14 +190,7 @@ export function HistoryPage() {
       </section>
 
       <section className="py-16 border-y border-[#222] overflow-hidden bg-[#0A0A0A] relative">
-        <motion.div
-          style={{ x: marqueeLeft }}
-          className="whitespace-nowrap flex gap-12 px-6"
-        >
-          <h2 className="text-[8vw] font-black uppercase text-transparent bg-clip-text bg-linear-to-b from-[#222] to-[#111] tracking-tighter">
-            LEGACY BUILT ON PRAYER • STORY OF FAITH • CALLED TO SERVE
-          </h2>
-        </motion.div>
+        <MarqueeBand text="LEGACY BUILT ON PRAYER • STORY OF FAITH • CALLED TO SERVE" />
 
         <div className="max-w-350 mx-auto px-6 md:px-12 mt-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <motion.div
@@ -342,14 +332,11 @@ export function HistoryPage() {
       </section>
 
       <section className="py-24 border-y border-[#222] bg-[#0A0A0A]">
-        <motion.div
-          style={{ x: marqueeRight }}
-          className="whitespace-nowrap flex gap-12 px-6"
-        >
-          <h2 className="text-[7vw] font-black uppercase text-transparent bg-clip-text bg-linear-to-b from-[#222] to-[#111] tracking-tighter">
-            PILLARS OF OUR HOUSE • SCRIPTURE • COMMUNITY • MISSION • WORSHIP
-          </h2>
-        </motion.div>
+        <MarqueeBand
+          text="PILLARS OF OUR HOUSE • SCRIPTURE • COMMUNITY • MISSION • WORSHIP"
+          direction="right"
+          speed={60}
+        />
 
         <div className="max-w-350 mx-auto px-6 md:px-12 mt-16">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">

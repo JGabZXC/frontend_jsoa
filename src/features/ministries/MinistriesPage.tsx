@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import {
   ArrowUpRight,
   BookOpen,
@@ -14,6 +14,7 @@ import {
 import type { ComponentType } from "react";
 import { useNavigate } from "react-router-dom";
 import { appRoutes } from "../../app/routes";
+import { MarqueeBand } from "../../shared";
 
 type Highlight = {
   label: string;
@@ -46,9 +47,6 @@ type ServeStep = {
 
 export function MinistriesPage() {
   const navigate = useNavigate();
-  const { scrollYProgress } = useScroll();
-  const marquee = useTransform(scrollYProgress, [0, 1], [0, -220]);
-
   const highlights: Highlight[] = [
     {
       label: "Ministry Teams",
@@ -275,14 +273,7 @@ export function MinistriesPage() {
       </section>
 
       <section className="py-20 border-y border-[#222] overflow-hidden bg-[#0A0A0A]">
-        <motion.div
-          style={{ x: marquee }}
-          className="whitespace-nowrap flex gap-12 px-6"
-        >
-          <h2 className="text-[7vw] font-black uppercase text-transparent bg-clip-text bg-linear-to-b from-[#222] to-[#111] tracking-tighter">
-            MINISTRIES • SERVE • DISCIPLE • WORSHIP • COMMUNITY
-          </h2>
-        </motion.div>
+        <MarqueeBand text="MINISTRIES • SERVE • DISCIPLE • WORSHIP • COMMUNITY" />
       </section>
 
       <section id="teams" className="py-24 border-t border-[#222]">

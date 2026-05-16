@@ -1,8 +1,9 @@
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import type { MouseEvent } from "react";
 import { ArrowRight, Compass, MapPin, Users } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { appRoutes } from "../../app/routes";
+import { MarqueeBand } from "../../shared";
 
 const plantingMetrics = [
   {
@@ -89,8 +90,6 @@ const regions = [
 
 export function PlantingPage() {
   const navigate = useNavigate();
-  const { scrollYProgress } = useScroll();
-  const marquee = useTransform(scrollYProgress, [0, 1], [0, -220]);
   const handleAnchorScroll =
     (targetId: string) => (event: MouseEvent<HTMLAnchorElement>) => {
       event.preventDefault();
@@ -197,14 +196,7 @@ export function PlantingPage() {
       </section>
 
       <section className="py-20 border-y border-[#222] overflow-hidden bg-[#0A0A0A] relative">
-        <motion.div
-          style={{ x: marquee }}
-          className="whitespace-nowrap flex gap-12 px-6"
-        >
-          <h2 className="text-[7vw] font-black uppercase text-transparent bg-clip-text bg-linear-to-b from-[#222] to-[#111] tracking-tighter">
-            DISCIPLE LEADERS SEND TEAMS SERVE CITIES PLANT CHURCHES REPEAT
-          </h2>
-        </motion.div>
+        <MarqueeBand text="DISCIPLE LEADERS SEND TEAMS SERVE CITIES PLANT CHURCHES REPEAT" />
 
         <div className="max-w-350 mx-auto px-6 md:px-12 mt-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-5 relative">
