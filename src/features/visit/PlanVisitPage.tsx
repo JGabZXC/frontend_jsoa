@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import type { MouseEvent } from "react";
 import {
   ArrowRight,
@@ -9,6 +9,7 @@ import {
   MapPin,
   Users,
 } from "lucide-react";
+import { MarqueeBand } from "../../shared";
 
 const displayFont = {
   fontFamily: '"Fraunces", "Iowan Old Style", serif',
@@ -96,8 +97,6 @@ const mapLink =
   "https://maps.google.com/?q=Section%20D%20Block%2017%20Tropical%20Village%2C%20San%20Francisco%2C%20General%20Trias%2C%20Cavite%204107%20Philippines";
 
 export function PlanVisitPage() {
-  const { scrollYProgress } = useScroll();
-  const marquee = useTransform(scrollYProgress, [0, 1], [0, -220]);
   const handleAnchorScroll =
     (targetId: string) => (event: MouseEvent<HTMLAnchorElement>) => {
       event.preventDefault();
@@ -224,14 +223,7 @@ export function PlanVisitPage() {
         id="service-times"
         className="py-20 border-y border-[#222] overflow-hidden bg-[#0A0A0A] relative"
       >
-        <motion.div
-          style={{ x: marquee }}
-          className="whitespace-nowrap flex gap-12 px-6"
-        >
-          <h2 className="text-[7vw] font-black uppercase text-transparent bg-clip-text bg-linear-to-b from-[#222] to-[#111] tracking-tighter">
-            WELCOME HOME PLAN YOUR FIRST SUNDAY FIND YOUR PEOPLE
-          </h2>
-        </motion.div>
+        <MarqueeBand text="WELCOME HOME PLAN YOUR FIRST SUNDAY FIND YOUR PEOPLE" />
 
         <div className="max-w-350 mx-auto px-6 md:px-12 mt-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           <div className="lg:col-span-5">

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import {
   ArrowRight,
   Clock,
@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { appRoutes } from "../../app/routes";
+import { MarqueeBand } from "../../shared";
 
 const bodyFont = {
   fontFamily: '"Manrope", "Avenir", sans-serif',
@@ -73,8 +74,6 @@ const prayerCategories = [
 export function PrayerPage() {
   const [submitted, setSubmitted] = useState(false);
   const navigate = useNavigate();
-  const { scrollYProgress } = useScroll();
-  const marquee = useTransform(scrollYProgress, [0, 1], [0, -220]);
 
   return (
     <div
@@ -352,14 +351,7 @@ export function PrayerPage() {
       </section>
 
       <section className="py-20 border-y border-[#222] overflow-hidden bg-[#0A0A0A]">
-        <motion.div
-          style={{ x: marquee }}
-          className="whitespace-nowrap flex gap-12 px-6"
-        >
-          <h2 className="text-[7vw] font-black uppercase text-transparent bg-clip-text bg-linear-to-b from-[#222] to-[#111] tracking-tighter">
-            PRAYER • COVERING • HEALING • RESTORATION • FAITH
-          </h2>
-        </motion.div>
+        <MarqueeBand text="PRAYER • COVERING • HEALING • RESTORATION • FAITH" />
       </section>
 
       <section className="py-24 border-y border-[#222] bg-[#0A0A0A]">

@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import {
   ArrowRight,
   Bell,
@@ -11,12 +11,10 @@ import {
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { appRoutes } from "../../app/routes";
+import { MarqueeBand } from "../../shared";
 
 export function HomePage() {
   const navigate = useNavigate();
-  const { scrollYProgress } = useScroll();
-  const y1 = useTransform(scrollYProgress, [0, 1], [0, -200]);
-  const y2 = useTransform(scrollYProgress, [0, 1], [0, 200]);
   const [activeAnnouncement, setActiveAnnouncement] = useState<number | null>(
     null,
   );
@@ -126,14 +124,7 @@ export function HomePage() {
 
       {/* TYPOGRAPHY MARQUEE & MANIFESTO */}
       <section className="py-20 border-y border-[#222] overflow-hidden bg-[#0A0A0A] relative">
-        <motion.div
-          style={{ x: y1 }}
-          className="whitespace-nowrap flex gap-12 px-6"
-        >
-          <h2 className="text-[8vw] font-black uppercase text-transparent bg-clip-text bg-linear-to-b from-[#222] to-[#111] tracking-tighter">
-            ROOTED IN SCRIPTURE DRIVEN BY LOVE FOUNDATIONS OF FAITH
-          </h2>
-        </motion.div>
+        <MarqueeBand text="ROOTED IN SCRIPTURE DRIVEN BY LOVE FOUNDATIONS OF FAITH" />
 
         <div className="max-w-350 mx-auto px-6 md:px-12 mt-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-5">
@@ -188,15 +179,14 @@ export function HomePage() {
       </section>
 
       {/* ANNOUNCEMENTS */}
-      <section className="py-24 border-y border-[#222] overflow-hidden bg-[#0A0A0A] relative">
-        <motion.div
-          style={{ x: y2 }}
-          className="whitespace-nowrap flex gap-12 px-6"
-        >
-          <h2 className="text-[7vw] font-black uppercase text-transparent bg-clip-text bg-linear-to-b from-[#222] to-[#111] tracking-tighter">
-            ANNOUNCEMENTS UPCOMING MOMENTS LATEST UPDATES
-          </h2>
-        </motion.div>
+      <section
+        className="py-24 border-y border-[#222] overflow-hidden bg-[#0A0A0A] relative"
+      >
+        <MarqueeBand
+          text="ANNOUNCEMENTS UPCOMING MOMENTS LATEST UPDATES"
+          direction="right"
+          speed={58}
+        />
 
         <div className="max-w-350 mx-auto px-6 md:px-12 mt-12">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-12">
